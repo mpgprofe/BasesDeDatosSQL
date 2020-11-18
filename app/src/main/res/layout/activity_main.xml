@@ -84,4 +84,12 @@
         android:text="Mostrar"
         app:layout_constraintStart_toEndOf="@+id/buttonBorrar"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonActualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Actualizar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lista" />
 </androidx.constraintlayout.widget.ConstraintLayout>

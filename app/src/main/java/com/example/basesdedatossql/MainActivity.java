@@ -17,7 +17,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     EditText editTextID, editTextModelo, editTextMarca, editTextPrecio;
-    Button buttonGuardar, buttonBorrar, buttonMostrar;
+    Button buttonGuardar, buttonBorrar, buttonMostrar, buttonActualizar;
     ListView listView;
 
     @Override
@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         buttonGuardar = findViewById(R.id.buttonGuardar);
         buttonBorrar = findViewById(R.id.buttonBorrar);
         buttonMostrar = findViewById(R.id.buttonMostrar);
+        buttonActualizar = findViewById(R.id.buttonActualizar);
         listView = findViewById(R.id.lista);
 
         ManejadorBD manejadorBD = new ManejadorBD(this);
@@ -91,6 +92,22 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
+            }
+        });
+
+        buttonActualizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                boolean resultado = manejadorBD.actualizar(editTextID.getText().toString(),
+                        editTextModelo.getText().toString(),
+                        editTextMarca.getText().toString(), editTextPrecio.getText().toString());
+
+                if (resultado) {
+                    Toast.makeText(MainActivity.this, "Actualizado correctamente", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "Error en la actualización.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

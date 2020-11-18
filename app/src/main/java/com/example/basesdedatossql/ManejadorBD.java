@@ -70,4 +70,19 @@ public class ManejadorBD extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
+
+    public boolean actualizar(String id, String modelo, String marca, String precio) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_MARCA, marca);
+        contentValues.put(COL_MODELO, modelo);
+        contentValues.put(COL_PRECIO, precio);
+
+        long resultado = db.update(TABLE_NAME, contentValues, COL_ID+"=?", new String[]{id});
+
+        db.close();
+        return (resultado>0);
+
+    }
+
 }
